@@ -1,6 +1,6 @@
 {
   "name": "@wyzip/cli-w",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "dispatchTerminalCommand.js",
   "bin": {
