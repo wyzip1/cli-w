@@ -15,17 +15,19 @@ function createJs (fileName) {
 }
 
 async function createReact (_fileName) { 
-  const fileName = formatName(_fileName);
+  const filePath = formatName(_fileName);
   const path = process.cwd();
-  const file = fileName + '/index.jsx';
+  const file = filePath + '/index.jsx';
+  const fileName = formatName(_fileName, false)
   const data = await ejs.renderFile(react_temp_path, { fileName });
   createFile(file, path, data);
 }
 
 async function createVue (_fileName) {
-  const fileName = formatName(_fileName);
+  const filePath = formatName(_fileName);
   const path = process.cwd();
-  const file = fileName + '/index.vue';
+  const file = filePath + '/index.vue';
+  const fileName = formatName(_fileName, false)
   const data = await ejs.renderFile(vue_temp_path, { fileName });
   createFile(file, path, data);
 }

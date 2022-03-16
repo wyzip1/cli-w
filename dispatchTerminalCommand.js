@@ -14,6 +14,6 @@ program
   });
 
 // commands
-program.version(`w-cli v${"1.0.0"}`);
+program.version(`w-cli v${process.version}`);
 
 program.parse(process.argv);
