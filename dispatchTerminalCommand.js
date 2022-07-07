@@ -2,6 +2,7 @@
 
 const packageJson = require('./package.json');
 const createFolder = require("./createFolder");
+const initTemplate = require('./initTemplate')
 const program = require("commander");
 
 program
@@ -22,6 +23,14 @@ program
   .action((args) => {
     createFolder({ createJs: args });
   });
+
+program
+	.command('init')
+	.option('-t, --template-name <name>')
+	.allowUnknownOption()
+	.action(args => {
+		initTemplate(args)
+	})
 
 // commands
 program.version(`w-cli v${packageJson.version}`);
