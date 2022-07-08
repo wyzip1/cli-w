@@ -1,7 +1,6 @@
-import App from "./App.vue";
-import { createApp } from "vue";
-import "styles/_index.less";
-import "styles/_reset.less";
-import router from "./router";
+import App from './App.vue'
+import { createApp } from 'vue'
+import 'styles/_index.less'
+import 'styles/_reset.less'
 
-createApp(App).use(router).mount("#root");
+createApp(App).mount('#root')

@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 export function guid() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
@@ -30,23 +28,4 @@ export const checkTimeMoreThenTreeMonth = (start, end) => {
   const endTime = (end instanceof Date ? end : new Date(end)).getTime();
   if (maxTime < endTime) return true;
   return false;
-};
-
-export const useDateRanger = (_dateList, month = 3) => {
-  return useMemo(() => {
-    const dateList = _dateList || [];
-    let max, min;
-    if (dateList[0]) {
-      const date = new Date(dateList[0]);
-      date.setMonth(date.getMonth() + month);
-      max = date > Date.now() ? new Date() : date;
-    } else max = new Date();
-    if (dateList[1]) {
-      const date = new Date(dateList[1]);
-      date.setMonth(date.getMonth() - month);
-      min = date;
-    } else min = null;
-
-    return [min, max];
-  }, [_dateList, month]);
 };
