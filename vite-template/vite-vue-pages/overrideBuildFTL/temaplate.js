@@ -16,6 +16,10 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
+function unrepeated(...arrs) {
+  return [...new Set(arrs.flat(Infinity))];
+}
+
 function toPublicPath(filename) {
   return `https://file.yzcdn.cn/mall-cloud/${(0,
   _utils.getAppName)()}/${filename}`;
@@ -112,11 +116,12 @@ function buildFtlFilePlugin(config) {
               ...(0, _utils.addJsImportFile)(bundle, jsFilePath).map(item =>
                 toPreloadTag(item)
               ),
-              ...(value.css ?? []).map(css => toCsslinkTag(css)),
-              ...(value.imports ?? [])
-                .map(file => manifestJson[file].css ?? [])
-                .flat(Infinity)
-                .map(css => toCsslinkTag(css)),
+              ...unrepeated(
+                value.css ?? [],
+                (value.imports ?? [])
+                  .map(file => manifestJson[file].css ?? [])
+                  .flat(Infinity)
+              ).map(css => toCsslinkTag(css)),
             ];
             result = (0, _utils.injectToHead)(result, assetTags);
 
